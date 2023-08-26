@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starry Sky</title>
+    <style>
+      * {
+        width: 100%;
+        height: 100%;
+        box-sizing: content-box;
+      }
+      #bg {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <!-- 引入StarrySky -->
+    <script src="StarrySky.js"></script>
+    <script>
+      //初始化，传入参数必须是Canvas对象
+      StarrySky.init(document.getElementById("bg"));
+      //设置星星数量等级
+      StarrySky.setStarCountLevel(0.2);
+      //设置星星速度等级
+      StarrySky.setStarSpeedLevel(0.0005);
+      //设置星星颜色，并立刻更改颜色
+      StarrySky.setStarColorList(["255, 255, 255"], true);
+      //渲染
+      StarrySky.render();
+      //销毁
+      //StarrySky.destroy();
+    </script>
+  </body>
+</html>
