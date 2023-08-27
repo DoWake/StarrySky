@@ -65,7 +65,7 @@ const StarrySky = function () {
           }
         }
         const self = this;
-        window.addEventListener("resize", self.debounce(function () {
+        window.addEventListener("resize", self.throttle(function () {
           canvasElement.width = canvasElement.clientWidth;
           canvasElement.height = canvasElement.clientHeight;
           canvasWidth = canvasElement.clientWidth;
@@ -91,6 +91,15 @@ const StarrySky = function () {
       } else {
         console.error('初始化失败，必须传入Canvas元素');
       }
+    },
+    //设置星空背景颜色
+    setSkyColor: function (sky_color = "black") {
+      skyColor = sky_color;
+      canvasElement.style.backgroundColor = skyColor;
+    },
+    //设置星星半径大小
+    setStarRadius: function (star_radius = 1) {
+      starRadius = star_radius;
     },
     //设置焦距等级
     setFocalDistanceLevel: function (focal_distance_level = 0.4) {
@@ -126,7 +135,6 @@ const StarrySky = function () {
      * @param {Boolean} mode 是否立刻同步颜色
      */
     setStarColorList: function (color, mode = false) {
-      console.log(typeof color);
       if (typeof color === 'object') {
         starColorList = color;
       } else if (typeof color === 'string') {
@@ -192,6 +200,20 @@ const StarrySky = function () {
           func();
         }, time);
       }
+    },
+    //节流
+    throttle: function (func, time = 200) {
+      let timeId = null;
+      let pre = 0;
+      return function () {
+        if (Date.now() - pre > time) {
+          clearTimeout(timeId);
+          pre = Date.now();
+          func();
+        } else {
+          timeId = setTimeout(func, time);
+        }
+      };
     }
   }
 }();
