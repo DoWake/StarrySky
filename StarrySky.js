@@ -16,8 +16,6 @@ const StarrySky = function () {
   let canvasWidth;
   //Canvas 高度
   let canvasHeight;
-  //天空背景颜色
-  let skyColor;
   //星星列表
   let starList;
   //星星颜色列表，rgb格式："255, 255, 255"
@@ -43,8 +41,7 @@ const StarrySky = function () {
         canvasElement = canvas_element;
         canvasElement.width = canvasElement.clientWidth;
         canvasElement.height = canvasElement.clientHeight;
-        skyColor = "black"
-        canvasElement.style.backgroundColor = skyColor;
+        canvasElement.style.backgroundColor = "black";
         canvasContext = canvasElement.getContext("2d");
         canvasWidth = canvasElement.clientWidth;
         canvasHeight = canvasElement.clientHeight;
@@ -94,8 +91,7 @@ const StarrySky = function () {
     },
     //设置星空背景颜色
     setSkyColor: function (sky_color = "black") {
-      skyColor = sky_color;
-      canvasElement.style.backgroundColor = skyColor;
+      canvasElement.style.backgroundColor = sky_color;
     },
     //设置星星半径大小
     setStarRadius: function (star_radius = 1) {
